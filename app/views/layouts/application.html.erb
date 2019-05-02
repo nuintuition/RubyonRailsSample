@@ -11,9 +11,15 @@
 
   <body>
   <div>
-  <%= link_to "<h1 class = 'title'>hi hi new test</h1>".html_safe, root_path%>
+  <%= link_to root_path do%>
+    <h1 class = 'title'>hi hi new test</h1>
+  <% end %>
 <%= link_to "First", first_path%>
 <%= link_to "Second", second_path%>
+<%= link_to "Posts/1", controller: :home, action: :show_post, id: 1 %>
+<div>
+<%= @testName%>
+</div>
   </div>
     <%= yield %>
   </body>
