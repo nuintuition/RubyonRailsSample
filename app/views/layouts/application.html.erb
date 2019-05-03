@@ -10,17 +10,13 @@
   </head>
 
   <body>
-  <div>
-  <%= link_to root_path do%>
-    <h1 class = 'title'>hi hi new test</h1>
+  
+  <% if @nav_flag %>
+   <%= render partial: 'layouts/title'%>
   <% end %>
-<%= link_to "First", first_path%>
-<%= link_to "Second", second_path%>
-<%= link_to "Posts/1", controller: :home, action: :show_post, id: 1 %>
-<div>
-<%= @testName%>
-</div>
-  </div>
+  
+   <%= render partial: 'layouts/nav'%>
     <%= yield %>
+   <%= render partial: 'layouts/footer'%>
   </body>
 </html>
