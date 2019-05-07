@@ -1,4 +1,8 @@
 class HomeController < ApplicationController
+    #const value
+    PRODUCTS_COUNT = 100
+    LIMITED_PRODUCTS_NUMBER = 20
+    
     def index
         @ad ={
             title: "大型廣告",
@@ -6,8 +10,16 @@ class HomeController < ApplicationController
             action_title: "閱讀更多",
         }
 
+        if params[:page]
+            @page = params[:page].to_i
+        else
+            @page = 1
+        end
+
+        @first_page = 1
+        @last_page = (PRODUCTS_COUNT/LIMITED_PRODUCTS_NUMBER)
         @products = []
-        (1..4).each do |index|
+        (1..100).each do |index|
             product = {
                 id:index,
                 name: "商品#{index}",
@@ -16,5 +28,7 @@ class HomeController < ApplicationController
             }
             @products.push(product)
         end
+
+        @products = @products[(@page-1)* LIMITED_PRODUCTS_NUMBER,LIMITED_PRODUCTS_NUMBER]
     end
 end

@@ -61,6 +61,35 @@
                 </div>
                 <% end %>
             </div>
+
+            <div class ="row">
+                <div class = "col-md-12">
+                    <nav aria-label="Page navigation example">
+                        <ul class="pagination">
+                            <% if @page > @first_page %>
+                                <li class="page-item">
+                                <%= link_to root_path(page:(@page - 1)), class:"page-link" do %>
+                                    <span aria-hidden="true">&laquo;</span>
+                                <%end%>
+                                </li>
+                            <%end%>
+                            <% (@first_page..@last_page).each do |page_number|%>
+                            <li class="page-item">
+                            <%= link_to page_number, root_path(page: page_number), class:"page-link" %>
+                            </li>
+                            <%end%>
+                            <% if @page < @last_page %>
+                                <li class="page-item">
+                                <%= link_to root_path(page:(@page + 1)), class:"page-link" do %>
+                                    <span aria-hidden="true">&raquo;</span>
+                                <%end%>
+                                </li>
+                            <%end%>
+                        </ul>
+                    </nav>
+                </div>
+            </div>
+
         </div>
     </div>
 </div>
