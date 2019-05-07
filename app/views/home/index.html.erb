@@ -48,47 +48,18 @@
             </div>
             </div>
             <div class = "row">
-            <div class = "col-md-3">
-                <div class="card" style="width: 18rem;">
-                <img src="https://images.pexels.com/photos/2120483/pexels-photo-2120483.jpeg?auto=compress&cs=tinysrgb&dpr=2&w=500" class="card-img-top" alt="...">
-                <div class="card-body">
-                    <h5 class="card-title">商品</h5>
-                    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                    <a href="#" class="btn btn-primary">Go somewhere</a>
+                <% @products.each_with_index do |product, index| %>
+                    <div class = "col-md-3">
+                    <div class="card">
+                    <%= image_tag product[:image_url],class:"card-img-top" %>
+                    <div class="card-body">
+                        <h5 class="card-title"><%= "#{index}. #{product[:name]}"%></h5>
+                        <p class="card-text"><%= product[:description]%></p>
+                        <a href="#" class="btn btn-primary">Button</a>
+                    </div>
+                    </div>
                 </div>
-                </div>
-            </div>
-            <div class = "col-md-3">
-                <div class="card" style="width: 18rem;">
-                <img src="https://images.pexels.com/photos/2120483/pexels-photo-2120483.jpeg?auto=compress&cs=tinysrgb&dpr=2&w=500" class="card-img-top" alt="...">
-                <div class="card-body">
-                    <h5 class="card-title">商品</h5>
-                    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                    <a href="#" class="btn btn-primary">Go somewhere</a>
-                </div>
-                </div>
-            </div>
-            <div class = "col-md-3">
-                <div class="card" style="width: 18rem;">
-                <img src="https://images.pexels.com/photos/2120483/pexels-photo-2120483.jpeg?auto=compress&cs=tinysrgb&dpr=2&w=500" class="card-img-top" alt="...">
-                <div class="card-body">
-                    <h5 class="card-title">商品</h5>
-                    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                    <a href="#" class="btn btn-primary">Go somewhere</a>
-                </div>
-                </div>
-            </div>
-            <div class = "col-md-3">
-                <div class="card" style="width: 18rem;">
-                <img src="https://images.pexels.com/photos/2120483/pexels-photo-2120483.jpeg?auto=compress&cs=tinysrgb&dpr=2&w=500" class="card-img-top" alt="...">
-                <div class="card-body">
-                    <h5 class="card-title">商品</h5>
-                    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                    <a href="#" class="btn btn-primary">Go somewhere</a>
-                </div>
-                </div>
-            </div>
-            
+                <% end %>
             </div>
         </div>
     </div>
