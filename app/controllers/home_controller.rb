@@ -16,20 +16,10 @@ class HomeController < ApplicationController
             @page = 1
         end
 
-        @first_page = 1
-        @last_page = (PRODUCTS_COUNT/LIMITED_PRODUCTS_NUMBER)
         @products = Product.all
-        # @products = []
-        # (1..100).each do |index|
-        #     product = {
-        #         id:index,
-        #         name: "商品#{index}",
-        #         desription:"商品描述#{index}",
-        #         image_url: "https://images.pexels.com/photos/2120483/pexels-photo-2120483.jpeg?auto=compress&cs=tinysrgb&dpr=2&w=500"
-        #     }
-        #     @products.push(product)
-        # end
+        @first_page = 1
+        @last_page = (@products.count/LIMITED_PRODUCTS_NUMBER)
 
-        # @products = @products[(@page-1)* LIMITED_PRODUCTS_NUMBER,LIMITED_PRODUCTS_NUMBER]
+        @products = @products.offset((@page-1)*LIMITED_PRODUCTS_NUMBER).limit(LIMITED_PRODUCTS_NUMBER)
     end
 end
