@@ -18,8 +18,11 @@ class ProductsController < ApplicationController
     
             @products = Product.all
             @first_page = 1
-            @last_page = (@products.count/LIMITED_PRODUCTS_NUMBER)
-    
+            count = @products.count
+            @last_page = (count/LIMITED_PRODUCTS_NUMBER)
+            if(count%LIMITED_PRODUCTS_NUMBER)
+                @last_page +=1;
+            end
             @products = @products.offset((@page-1)*LIMITED_PRODUCTS_NUMBER).limit(LIMITED_PRODUCTS_NUMBER)
         end
 
